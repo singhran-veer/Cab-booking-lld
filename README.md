@@ -294,7 +294,7 @@ sequenceDiagram
     B->>Registry: reserve(D1, rideB)
     Note over Registry: mutex protects check and status update
     Registry-->>A: success
-    Registry-->>B: false; D1 already reserved
+    Registry-->>B: reservation failed - D1 already reserved
 ```
 
 Two riders can request the same available driver concurrently. `InMemoryDriverRepository::reserve()` protects the availability check and status update with one mutex-protected critical section. Therefore, only one reservation succeeds. A single atomic boolean would not protect the complete multi-field reservation transaction.

@@ -272,7 +272,7 @@ sequenceDiagram
     B->>Registry: reserve(D1, rideB)
     Note over Registry: mutex protects check and status update
     Registry-->>A: success
-    Registry-->>B: false; D1 already reserved
+    Registry-->>B: reservation failed - D1 already reserved
 ```
 
 ## Concurrency
